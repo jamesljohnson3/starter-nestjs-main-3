@@ -10,6 +10,8 @@ import { OtpModule } from './otp/otp.module';
 import { UserModule } from './user/user.module'; // Import the UserModule
 import { CheckUserController } from './store/user.controller'; // Import the DataController
 import { WebsiteController } from './upload/upload.controller'; // Update the path accordingly
+import { S3Module } from './s3/s3.module';
+import { PostsModule } from './posts/posts.module'; // Assuming you also have a 'posts' module
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { WebsiteController } from './upload/upload.controller'; // Update the pa
       dest: './uploads', // Destination folder for uploaded files
     }),
     UserModule, // Add the UserModule here
+    S3Module, 
+    PostsModule
   ],
   controllers: [
     AppController,
