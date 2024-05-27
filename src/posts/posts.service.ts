@@ -1,12 +1,16 @@
 // posts/posts.service.ts
 import { Injectable } from '@nestjs/common';
-import { S3Service } from '../s3/s3.service'; // Import the S3Service
 
 @Injectable()
 export class PostsService {
-  constructor(private readonly s3Service: S3Service) {} // Inject the S3Service
+  // Sample data, replace with actual implementation
+  private readonly posts = [
+    { id: 1, title: 'Post 1', content: 'Content of post 1' },
+    { id: 2, title: 'Post 2', content: 'Content of post 2' },
+    { id: 3, title: 'Post 3', content: 'Content of post 3' },
+  ];
 
-  async getAllPosts() {
-    return this.s3Service.listObjects(); // Fetch S3 objects instead of returning static posts
+  getAllPosts() {
+    return this.posts;
   }
 }
