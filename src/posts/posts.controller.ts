@@ -8,6 +8,6 @@ export class PostsController {
 
   @Get()
   async getAllPosts() {
-    return this.postsService.getAllPosts();
+    return this.postsService.getAllPosts(); // Modify this to fetch S3 objects
   }
 }
