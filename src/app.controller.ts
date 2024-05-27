@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Headers, Query } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { HttpService } from '@nestjs/axios';
+import { S3Service } from './s3.service';
 
 interface ApiResponse {
   message: string;
@@ -13,6 +14,19 @@ interface PostData {
   field2: string;
   // Add more fields as needed
 }
+
+
+@Controller('posts')
+export class S3Controller {
+  constructor(private readonly s3Service: S3Service) {}
+
+  @Get()
+  async listPosts() {
+    const objects = await this.s3Service.listObjects();
+    return { objects };
+  }
+}
+
 @Controller('actions')
 export class AppController {
   private readonly allowedUUID = '22-22-22'; // Replace with your authorized UUID
